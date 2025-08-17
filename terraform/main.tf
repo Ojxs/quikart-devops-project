@@ -1,6 +1,8 @@
 # Define the AWS provider and region
 provider "aws" {
-  region = "us-east-1" # Set your desired AWS region here
+  region = "us-east-1"
+  access_key = var.aws_access_key
+  secret_key = var.aws_secret_access_key
 }
 
 # Create Elastic Container Registry (ECR) for our backend Docker image
