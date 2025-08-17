@@ -9,9 +9,6 @@ jobs:
   terraform:
     name: "Plan Terraform"
     runs-on: ubuntu-latest
-    env:
-      TF_VAR_aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      TF_VAR_aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
     
     steps:
       - name: Checkout code
@@ -26,4 +23,4 @@ jobs:
 
       - name: Terraform plan
         working-directory: ./terraform
-        run: terraform plan
+        run: terraform plan -var="aws_access_key=${{ secrets.AWS_ACCESS_KEY_ID }}" -var="aws_secret_access_key=${{ secrets.AWS_SECRET_ACCESS_KEY }}"
